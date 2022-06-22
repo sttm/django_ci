@@ -22,8 +22,8 @@ jobs:
     needs: [run_test]
     runs-on: [ubuntu-latest]
     env:
-      LOGIN: ${{ secret.DOCKER_LOGIN }}
-      NAME: ${{ secret.DOCKER_NAME }}
+      LOGIN: ${{ secrets.DOCKER_LOGIN }}
+      NAME: ${{ secrets.DOCKER_NAME }}
     steps:
       - name: Login to docker
         run: echo ${{ secrets.DOCKER_TOKEN }} | docker login -u ${{ secrets.DOCKER_LOGIN }} --password-stdin
