@@ -14,5 +14,7 @@ jobs:
           architecture: 'x64'
       - name: Install reuirements
         run: pip install -r requirements.txt
+      - name: Check codestyle
+        run: pycodestyle ./firstpage/*.py
       - name: Tests
         run: python manage.py test
