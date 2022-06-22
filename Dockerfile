@@ -1,7 +1,9 @@
-FROM python:3.9-alpine
-
-
+FROM python:3
+RUN apt-get update && apt-get upgrade -y && apt-get autoclean
+COPY . /django_ci/
 WORKDIR /django_ci
-COPY ./ /django_ci
-RUN apk update && pip install -r /django_ci/requirements.txt --no-cache-dir
-EXPOSE 8000
+
+RUN pip install --upgrade pip
+RUN pip install django
+ENTRYPOINT [ "python", "manage.py" ]
+CMD [ "runserver", "0.0.0.0:8000" ]
